@@ -2,10 +2,12 @@ import 'package:audibrain/app.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  //Localization
+  await FlutterLocalization.instance.ensureInitialized();
   // Load environment variables
   await dotenv.load(fileName: ".env");
 

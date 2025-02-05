@@ -5,14 +5,14 @@ import 'package:audibrain/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class FAppDrawer extends StatefulWidget {
-  const FAppDrawer({super.key});
+class MyAppDrawer extends StatefulWidget {
+  const MyAppDrawer({super.key});
 
   @override
-  State<FAppDrawer> createState() => _FAppDrawerState();
+  State<MyAppDrawer> createState() => _MyAppDrawerState();
 }
 
-class _FAppDrawerState extends State<FAppDrawer> {
+class _MyAppDrawerState extends State<MyAppDrawer> {
   // User log out
   void _userLogOut() async {
     final AuthController authController = AuthController();
