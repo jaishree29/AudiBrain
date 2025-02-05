@@ -99,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Email TextField
 
-                  NTextFieldInput(
+                  ATextFieldInput(
                     hintText: 'Email',
                     icon: Icons.email,
                     isPass: false,
@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Password TextField
 
-                  NTextFieldInput(
+                  ATextFieldInput(
                     hintText: 'Password',
                     icon: Icons.lock,
                     isPass: true,
@@ -121,7 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   // Sign-Up Button
 
-                  FElevatedButton(
+                  AElevatedButton(
                     text: 'Sign Up',
                     onPressed: _handleSignUp,
                     backgroundColor: AColors.primary,
@@ -130,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Google Sign-Up Button
 
-                  FElevatedButton(
+                  AElevatedButton(
                     text: 'Sign Up with Google',
                     textColor: Colors.black,
                     onPressed: _handleGoogleSignUp,

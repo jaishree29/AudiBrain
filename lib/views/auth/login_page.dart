@@ -118,7 +118,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 80),
 
                 // Email TextField
-                NTextFieldInput(
+                ATextFieldInput(
                   hintText: 'Email',
                   icon: Icons.email,
                   isPass: false,
@@ -126,7 +126,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
 
                 // Password TextField
-                NTextFieldInput(
+                ATextFieldInput(
                   hintText: 'Password',
                   icon: Icons.lock,
                   isPass: true,
@@ -138,7 +138,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Column(
               children: [
                 // Sign-In Button
-                FElevatedButton(
+                AElevatedButton(
                   text: 'Sign In',
                   onPressed: _handleSignIn,
                   backgroundColor: AColors.primary,
@@ -146,7 +146,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 20),
 
                 // Google Sign-In Button
-                FElevatedButton(
+                AElevatedButton(
                   text: 'Sign In with Google',
                   textColor: Colors.black,
                   onPressed: _handleGoogleSignIn,

@@ -1,8 +1,8 @@
 import 'package:audibrain/utils/colors.dart';
 import 'package:flutter/material.dart';
 
-class FElevatedButton extends StatelessWidget {
-  const FElevatedButton({
+class AElevatedButton extends StatelessWidget {
+  const AElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,
