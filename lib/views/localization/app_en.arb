@@ -1,0 +1,26 @@
+{
+    "language": "English",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "AudiBrain",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "Welcome back,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "How are you today?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "Welcome to AudiBrain",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "Let us know in which language you would like to communicate!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

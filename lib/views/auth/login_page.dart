@@ -62,7 +62,6 @@ class _SignInScreenState extends State<SignInScreen> {
         );
       }
     } catch (e) {
-      // Handle any errors during sign-in (like wrong credentials)
       print("Sign-in error: $e");
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Failed to sign in: ${e.toString()}")),
