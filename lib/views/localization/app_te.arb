@@ -1,0 +1,26 @@
+{
+    "language": "తెలుగు",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ఆడిబ్రెయిన్",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "తిరిగి స్వాగతం,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "మీరు ఈరోజు ఎలా ఉన్నారు?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ఆడిబ్రెయిన్‌కు స్వాగతం",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "మీరు ఏ భాషలో కమ్యూనికేట్ చేయాలనుకుంటున్నారో మాకు తెలియజేయండి!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

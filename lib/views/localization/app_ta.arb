@@ -1,0 +1,26 @@
+{
+    "language": "தமிழ்",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ஆடிபிரெயின்",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "மீண்டும் வருக,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "இன்று நீங்கள் எப்படி இருக்கிறீர்கள்?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ஆடிபிரெயினுக்கு வரவேற்கிறோம்",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "நீங்கள் எந்த மொழியில் தொடர்பு கொள்ள விரும்புகிறீர்கள் என்பதை எங்களுக்குத் தெரியப்படுத்துங்கள்!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

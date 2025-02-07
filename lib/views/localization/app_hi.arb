@@ -1,0 +1,26 @@
+{
+    "language": "हिंदी",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ऑडीब्रेन",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "वापस स्वागत है,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "आज आप कैसे हैं?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ऑडीब्रेन में आपका स्वागत है",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "हमें बताएं कि आप किस भाषा में बातचीत करना चाहते हैं!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

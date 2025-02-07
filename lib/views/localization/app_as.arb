@@ -1,0 +1,26 @@
+{
+    "language": "অসমীয়া",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "অডিব্ৰেইন",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "পুনৰ স্বাগতম,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "আজি আপোনাৰ কেনে আছে?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "অডিব্ৰেইনলৈ স্বাগতম",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "আমাক জনাওক আপুনি কোন ভাষাত যোগাযোগ কৰিব বিচাৰে!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

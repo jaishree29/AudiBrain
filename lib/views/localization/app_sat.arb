@@ -1,0 +1,26 @@
+{
+    "language": "ᱥᱟᱱᱛᱟᱲᱤ",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ᱟᱣᱰᱤᱵᱽᱨᱮᱱ",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "ᱫᱩᱦᱟᱹᱨ ᱥᱟᱨᱦᱟᱣ,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "ᱟᱢᱤ ᱚᱠᱛᱚ ᱨᱮ ᱪᱮᱫ ᱞᱮᱠᱟ ᱢᱮᱱᱟᱢᱟ?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ᱟᱣᱰᱤᱵᱽᱨᱮᱱ ᱨᱮ ᱥᱟᱨᱦᱟᱣ",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ᱟᱢᱤ ᱪᱮᱫ ᱯᱟᱹᱨᱥᱤ ᱛᱮ ᱠᱷᱚᱵᱚᱨ ᱮᱢ ᱮᱫ ᱠᱟᱱ ᱢᱮ ᱚᱱᱟ ᱞᱟᱹᱭ ᱢᱮ!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "language": "बड़ो",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "आडिब्रेइन",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "फिरथि स्वागत,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "नोंआ आज खामा जादों?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "आडिब्रेइनाव स्वागत",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "नोंआ बेनि भासायाव गोसोखांनो हागौ बेखौ आंखालानो!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

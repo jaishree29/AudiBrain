@@ -1,0 +1,26 @@
+{
+    "language": "ଓଡ଼ିଆ",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ଅଡିବ୍ରେନ୍",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "ପୁନର୍ବାର ସ୍ୱାଗତ,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "ଆଜି ଆପଣ କେମିତି ଅଛନ୍ତି?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ଅଡିବ୍ରେନ୍ କୁ ସ୍ୱାଗତ",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ଆମକୁ ଜଣାନ୍ତୁ ଆପଣ କେଉଁ ଭାଷାରେ ଯୋଗାଯୋଗ କରିବାକୁ ଚାହୁଁଛନ୍ତି!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

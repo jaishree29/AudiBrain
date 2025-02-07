@@ -1,0 +1,26 @@
+{
+    "language": "اردو",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "آڈی برین",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "خوش آمدید،",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "آج آپ کیسے ہیں؟",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "آڈی برین میں خوش آمدید",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ہمیں بتائیں کہ آپ کس زبان میں بات چیت کرنا چاہتے ہیں!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

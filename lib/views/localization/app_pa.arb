@@ -1,0 +1,26 @@
+{
+    "language": "ਪੰਜਾਬੀ",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ਔਡੀਬ੍ਰੇਨ",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "ਵਾਪਸ ਸਵਾਗਤ ਹੈ,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "ਤੁਸੀਂ ਅੱਜ ਕਿਵੇਂ ਹੋ?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ਔਡੀਬ੍ਰੇਨ ਵਿੱਚ ਤੁਹਾਡਾ ਸਵਾਗਤ ਹੈ",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਸੀਂ ਕਿਸ ਭਾਸ਼ਾ ਵਿੱਚ ਸੰਚਾਰ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

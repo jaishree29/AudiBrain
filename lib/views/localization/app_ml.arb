@@ -1,0 +1,26 @@
+{
+    "language": "മലയാളം",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ഓഡിബ്രെയിൻ",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "തിരികെ സ്വാഗതം,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "ഇന്ന് നിങ്ങൾക്ക് എങ്ങനെയുണ്ട്?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ഓഡിബ്രെയിനിലേക്ക് സ്വാഗതം",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ഏത് ഭാഷയിൽ ആണ് നിങ്ങൾ ആശയവിനിമയം നടത്താൻ ആഗ്രഹിക്കുന്നതെന്ന് ഞങ്ങളെ അറിയിക്കൂ!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

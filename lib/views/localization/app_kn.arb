@@ -1,0 +1,26 @@
+{
+    "language": "کٲشُر",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "آڈیبرین",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "دوبارہ خوش آمدید,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "تہِ چھُہ آج کیا حال؟",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "آڈیبرین خوش آمدید",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ہمہِ کہِ چھُہ یہِ بتاونہِ یمہِ زبانہِ منز بات چیت کرن چاہتھ!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}

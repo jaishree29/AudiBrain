@@ -1,0 +1,26 @@
+{
+    "language": "ಕನ್ನಡ",
+    "@language": {
+        "description": "The current language"
+    },
+    "appName": "ಆಡಿಬ್ರೇನ್",
+    "@appName": {
+        "description": "This is my application name"
+    },
+    "welcomeBack": "ಮರಳಿ ಸ್ವಾಗತ,",
+    "@welcomeBack": {
+        "description": "Welcome message"
+    },
+    "howAreYouToday": "ನೀವು ಇಂದು ಹೇಗಿದ್ದೀರಿ?",
+    "@howAreYouToday": {
+        "description": "Greeting message"
+    },
+    "welcomeToAudiBrain": "ಆಡಿಬ್ರೇನ್‌ಗೆ ಸ್ವಾಗತ",
+    "@welcomeToAudiBrain": {
+        "description": "Welcome title"
+    },
+    "selectLanguage": "ನೀವು ಯಾವ ಭಾಷೆಯಲ್ಲಿ ಸಂವಹನ ನಡೆಸಲು ಬಯಸುತ್ತೀರಿ ಎಂಬುದನ್ನು ನಮಗೆ ತಿಳಿಸಿ!",
+    "@selectLanguage": {
+        "description": "Language selection prompt"
+    }
+}
