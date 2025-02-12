@@ -27,6 +27,8 @@ class SplashScreenState extends State<SplashScreen> {
     var isLoggedIn = sharedPref.getBool(KEYLOGIN);
     var role = sharedPref.getString('userRole');
 
+    print("Splash Screen: isLoggedIn = $isLoggedIn, role = $role");
+
     Timer(const Duration(seconds: 3), () {
       if (isLoggedIn == true) {
         if (role == 'pwd') {

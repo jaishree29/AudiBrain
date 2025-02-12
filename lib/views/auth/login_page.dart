@@ -51,7 +51,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
       if (user != null) {
         var sharedPref = await SharedPreferences.getInstance();
-        sharedPref.setBool(SplashScreenState.KEYLOGIN, true);
+        await sharedPref.setBool(SplashScreenState.KEYLOGIN, true);
         sharedPref.setString('userRole', user.role ?? 'user');
         sharedPref.setString('selectedLanguage', user.language ?? 'en');
 

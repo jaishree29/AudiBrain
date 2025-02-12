@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage>
                   style: TextStyle(
                     fontFamily: 'Canva Sans',
                     fontWeight: FontWeight.normal,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
                 Text(
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage>
                   style: const TextStyle(
                     fontFamily: 'Canva Sans',
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: 16,
                     color: AColors.primary,
                   ),
                 ),
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage>
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Canva Sans',
-                      fontSize: 20,
+                      fontSize: 18,
                     ),
                   ),
                 ),
