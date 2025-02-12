@@ -1,4 +1,5 @@
 {
+    "@@locale": "doi",
     "language": "डोगरी",
     "@language": {
         "description": "The current language"

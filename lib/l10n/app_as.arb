@@ -1,4 +1,5 @@
-{
+{    
+    "@@locale": "as",
     "language": "অসমীয়া",
     "@language": {
         "description": "The current language"

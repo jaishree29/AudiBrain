@@ -3,6 +3,7 @@ import 'package:audibrain/utils/image_strings.dart';
 import 'package:audibrain/views/home/app_drawer.dart';
 import 'package:audibrain/views/notifications/notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage>
 
   // List of supported languages
   final List<String> _languages = ['English', 'Spanish', 'French', 'German'];
-  String _selectedLanguage = 'English'; // Default language
+  String _selectedLanguage = 'English'; 
 
   @override
   void initState() {
@@ -101,7 +102,7 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
                 Text(
-                  'How are you today?',
+                  AppLocalizations.of(context)!.howAreYouToday,
                   style: const TextStyle(
                     fontFamily: 'Canva Sans',
                     fontWeight: FontWeight.bold,
