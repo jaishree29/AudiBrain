@@ -129,117 +129,225 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 100),
-                  const Icon(Icons.mail, size: 70),
-                  const SizedBox(height: 80),
-
-                  // Email TextField
-                  ATextFieldInput(
-                    hintText: 'Email',
-                    icon: Icons.email,
-                    isPass: false,
-                    textController: _emailController,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
+                // App Name
+                const Text(
+                  'AudiBrain',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: AColors.primary,
                   ),
-
-                  // Password TextField
-                  ATextFieldInput(
-                    hintText: 'Password',
-                    icon: Icons.lock,
-                    isPass: true,
-                    textController: _passwordController,
+                ),
+                const SizedBox(height: 40),
+                // Role Selection
+                const Text(
+                  'Sign up as:',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
                   ),
-
-                  // Role Selection Dropdown
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
-                    child: Column(
-                      children: [
-                        DropdownButtonFormField<String>(
-                          value: _selectedRole,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _selectedRole = newValue;
-                            });
-                          },
-                          items: ['user', 'pwd']
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                          decoration: const InputDecoration(
-                            labelText: 'Select Role',
-                          ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // Assisted User Role
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedRole = 'pwd';
+                        });
+                        print(_selectedRole);
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: _selectedRole == 'pwd'
+                              ? AColors.primary
+                              : Colors.grey[200],
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        
-                        // Language Selection Dropdown
-                        DropdownButtonFormField<String>(
-                          value: _selectedLanguageCode,
-                          onChanged: (String? newValue) {
-                            if (newValue != null) {
-                              _setSelectedLanguage(newValue);
-                            }
-                          },
-                          items: _languageMap.entries
-                              .map<DropdownMenuItem<String>>((entry) {
-                            return DropdownMenuItem<String>(
-                              value: entry.key, // Stores the language code
-                              child: Text(
-                                entry.value,
-                              ), // Displays the full language name
-                            );
-                          }).toList(),
-                          decoration: const InputDecoration(
-                            labelText: 'Select Language',
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 80),
-              Column(
-                children: [
-                  // Sign-Up Button
-                  AElevatedButton(
-                    text: 'Sign Up',
-                    onPressed: _handleSignUp,
-                    backgroundColor: AColors.primary,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 50),
-              Column(
-                children: [
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Already have an account?',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  TextButton(
-                    onPressed: () => {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.accessibility_new,
+                              size: 40,
+                              color: _selectedRole == 'pwd'
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Assisted User',
+                              style: TextStyle(
+                                fontFamily: 'Canva Sans',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: _selectedRole == 'pwd'
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              'for those with speech disabilities',
+                              style: TextStyle(
+                                fontFamily: 'Canva Sans',
+                                fontSize: 12,
+                                color: _selectedRole == 'pwd'
+                                    ? Colors.white
+                                    : Colors.grey[600],
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
                       ),
+                    ),
+                    // Regular User Role
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedRole = 'user';
+                        });
+                        print(_selectedRole);
+                      },
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: _selectedRole == 'user'
+                              ? AColors.primary
+                              : Colors.grey[200],
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.person,
+                              size: 40,
+                              color: _selectedRole == 'user'
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Regular User',
+                              style: TextStyle(
+                                color: _selectedRole == 'user'
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              'for communicating with them',
+                              style: TextStyle(
+                                fontFamily: 'Canva Sans',
+                                fontSize: 12,
+                                color: _selectedRole == 'user'
+                                    ? Colors.white
+                                    : Colors.grey[600],
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 40),
+                // Email TextField
+                ATextFieldInput(
+                  hintText: 'Email',
+                  icon: Icons.email,
+                  isPass: false,
+                  textController: _emailController,
+                ),
+                const SizedBox(height: 10),
+                // Password TextField
+                ATextFieldInput(
+                  hintText: 'Password',
+                  icon: Icons.lock,
+                  isPass: true,
+                  textController: _passwordController,
+                ),
+                const SizedBox(height: 30),
+                // Language Selection Dropdown
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: DropdownButtonFormField<String>(
+                    value: _selectedLanguageCode,
+                    onChanged: (String? newValue) {
+                      if (newValue != null) {
+                        _setSelectedLanguage(newValue);
+                      }
                     },
-                    child: const Text(
-                      'Sign In',
-                      style: TextStyle(fontSize: 17),
+                    items: _languageMap.entries
+                        .map<DropdownMenuItem<String>>((entry) {
+                      return DropdownMenuItem<String>(
+                        value: entry.key, // Stores the language code
+                        child: Text(
+                          entry.value,
+                        ), // Displays the full language name
+                      );
+                    }).toList(),
+                    decoration: const InputDecoration(
+                      labelText: 'Select Language',
+                      border: OutlineInputBorder(),
                     ),
                   ),
-                ],
-              ),
-            ],
+                ),
+                const SizedBox(height: 40),
+                // Sign-Up Button
+                AElevatedButton(
+                  text: 'Sign Up',
+                  onPressed: _handleSignUp,
+                  backgroundColor: AColors.primary,
+                ),
+                const SizedBox(height: 20),
+                // Sign-In Option
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Already have an account?',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignInScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          fontFamily: 'Canva Sans',
+                          fontSize: 16,
+                          color: AColors.primary,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
