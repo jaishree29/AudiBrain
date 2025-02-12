@@ -1,10 +1,13 @@
+import 'package:audibrain/app.dart';
 import 'package:audibrain/controllers/auth_controller.dart';
 import 'package:audibrain/utils/colors.dart';
 import 'package:audibrain/views/auth/login_page.dart';
 import 'package:audibrain/views/navbar.dart';
+import 'package:audibrain/views/pwd_navbar.dart';
 import 'package:audibrain/widgets/elevated_button.dart';
 import 'package:audibrain/widgets/text_field_input.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -17,42 +20,81 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthController _authController = AuthController();
+  String? _selectedRole;
+  String? _selectedLanguageCode; // Stores only the language code
+
+  // Mapping of language codes to names
+  final Map<String, String> _languageMap = {
+    'en': 'English',
+    'as': 'Assamese',
+    'bn': 'Bengali',
+    'hi': 'Hindi',
+    'gu': 'Gujarati',
+    'ka': 'Kannada',
+    'kn': 'Kashmiri',
+    'ko': 'Konkani',
+    'ml': 'Malayalam',
+    'mr': 'Marathi',
+    'or': 'Oriya',
+    'pa': 'Punjabi',
+    'ta': 'Tamil',
+    'te': 'Telugu',
+    'ur': 'Urdu',
+    'bo': 'Bodo',
+    'sat': 'Santhali',
+    'dog': 'Dogri',
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedLanguage();
+  }
+
+  Future<void> _loadSelectedLanguage() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _selectedLanguageCode =
+          prefs.getString('selectedLanguage') ?? 'en'; // Default to English
+    });
+  }
+
+  Future<void> _setSelectedLanguage(String languageCode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('selectedLanguage', languageCode);
+    setState(() {
+      _selectedLanguageCode = languageCode;
+    });
+
+    MyApp.setLocale(context, Locale(languageCode));
+  }
 
   void _handleSignUp() async {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
-    final user = await _authController.signUpWithEmailPassword(email, password);
+    final prefs = await SharedPreferences.getInstance();
 
-    if (!mounted) return;
-
-    if (email.isEmpty || password.isEmpty) {
+    if (email.isEmpty ||
+        password.isEmpty ||
+        _selectedRole == null ||
+        _selectedLanguageCode == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Please fill in all fields.")),
       );
       return;
     }
 
-    if (!mounted) {
-      return null;
-    }
+    await prefs.setString('userRole', _selectedRole!);
+    print('User role selected: $_selectedRole');
 
-    if (user != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("User signed up: ${user.email}")),
-      );
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const NavBar()));
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("User already exists")),
-      );
-    }
-  }
+    final user = await _authController.signUpWithEmailPassword(
+      email,
+      password,
+      _selectedRole!,
+      _selectedLanguageCode!,
+    );
 
-  void _handleGoogleSignUp() async {
-    await _authController.signOutFromGoogle();
-
-    final user = await _authController.signUpWithGoogle();
+    await _setSelectedLanguage(_selectedLanguageCode!);
 
     if (!mounted) return;
 
@@ -60,9 +102,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("User signed up: ${user.email}")),
       );
+
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const NavBar()),
+        MaterialPageRoute(
+          builder: (context) =>
+              _selectedRole == 'pwd' ? const PwdNavbar() : const NavBar(),
+        ),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -89,16 +135,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Column(
                 children: [
                   const SizedBox(height: 100),
-                  // Logo
-                  // Image.asset(
-                  //   'assets/logo.png',
-                  //   height: 100,
-                  // ),
                   const Icon(Icons.mail, size: 70),
                   const SizedBox(height: 80),
 
                   // Email TextField
-
                   ATextFieldInput(
                     hintText: 'Email',
                     icon: Icons.email,
@@ -107,12 +147,60 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
 
                   // Password TextField
-
                   ATextFieldInput(
                     hintText: 'Password',
                     icon: Icons.lock,
                     isPass: true,
                     textController: _passwordController,
+                  ),
+
+                  // Role Selection Dropdown
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                    child: Column(
+                      children: [
+                        DropdownButtonFormField<String>(
+                          value: _selectedRole,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _selectedRole = newValue;
+                            });
+                          },
+                          items: ['user', 'pwd']
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                          decoration: const InputDecoration(
+                            labelText: 'Select Role',
+                          ),
+                        ),
+                        
+                        // Language Selection Dropdown
+                        DropdownButtonFormField<String>(
+                          value: _selectedLanguageCode,
+                          onChanged: (String? newValue) {
+                            if (newValue != null) {
+                              _setSelectedLanguage(newValue);
+                            }
+                          },
+                          items: _languageMap.entries
+                              .map<DropdownMenuItem<String>>((entry) {
+                            return DropdownMenuItem<String>(
+                              value: entry.key, // Stores the language code
+                              child: Text(
+                                entry.value,
+                              ), // Displays the full language name
+                            );
+                          }).toList(),
+                          decoration: const InputDecoration(
+                            labelText: 'Select Language',
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -120,21 +208,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Column(
                 children: [
                   // Sign-Up Button
-
                   AElevatedButton(
                     text: 'Sign Up',
                     onPressed: _handleSignUp,
                     backgroundColor: AColors.primary,
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Google Sign-Up Button
-
-                  AElevatedButton(
-                    text: 'Sign Up with Google',
-                    textColor: Colors.black,
-                    onPressed: _handleGoogleSignUp,
-                    backgroundColor: Colors.white,
                   ),
                 ],
               ),

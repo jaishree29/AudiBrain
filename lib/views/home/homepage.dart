@@ -93,8 +93,8 @@ class _HomePageState extends State<HomePage>
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Welcome back,',
+                Text(
+                  AppLocalizations.of(context)!.welcomeBack,
                   style: TextStyle(
                     fontFamily: 'Canva Sans',
                     fontWeight: FontWeight.normal,
@@ -152,9 +152,9 @@ class _HomePageState extends State<HomePage>
                 // const SizedBox(
                 //   height: 20,
                 // ),
-                const Center(
+                Center(
                   child: Text(
-                    'Welcome to AudiBrain',
+                    AppLocalizations.of(context)!.welcomeToAudiBrain,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Canva Sans',
@@ -173,9 +173,9 @@ class _HomePageState extends State<HomePage>
                 const SizedBox(
                   height: 20,
                 ),
-                const Center(
+                Center(
                   child: Text(
-                    'Let us know in which language you would like to communicate!',
+                    AppLocalizations.of(context)!.selectLanguage,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Canva Sans',

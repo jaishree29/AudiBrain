@@ -19,7 +19,7 @@ class AuthController {
   }
 
   // Sign up with email and password
-  Future<UserModel?> signUpWithEmailPassword(String email, String password) async {
+  Future<UserModel?> signUpWithEmailPassword(String email, String password, String role, String language) async {
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
@@ -36,6 +36,8 @@ class AuthController {
           await _firestore.collection('users').doc(user.uid).set({
             'email': user.email,
             'uid': user.uid,
+            'role': role,
+            'language': language,
           });
         }
 
@@ -91,24 +93,34 @@ class AuthController {
   }
 
   // Sign In with email and password
-  Future<UserModel?> signInWithEmailPassword(String email, String password) async {
+  // Sign In with email and password
+  Future<UserModel?> signInWithEmailPassword(
+      String email, String password) async {
     try {
-      if (kIsWeb) {
-        // Use web-specific method for sign-in
-        UserCredential userCredential = await _auth.getRedirectResult();
-        return UserModel.fromFirebase(userCredential.user);
-      } else {
-        // Use mobile-compatible method for sign-in
-        UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
-        return UserModel.fromFirebase(userCredential.user);
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      final user = userCredential.user;
+      if (user != null) {
+        final userDoc =
+            await _firestore.collection('users').doc(user.uid).get();
+
+        if (userDoc.exists) {
+          final userData = userDoc.data();
+          return UserModel(
+            uid: user.uid,
+            email: user.email!,
+            role: userData?['role'] ?? 'user',
+            language: userData?['language'] ?? 'en',
+          );
+        }
       }
     } catch (e) {
-      print("Error: $e");
-      return null;
+      print("Error fetching user details: $e");
     }
+    return null;
   }
 
   Future<UserModel?> signInWithGoogle() async {

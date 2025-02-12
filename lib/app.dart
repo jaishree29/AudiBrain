@@ -3,47 +3,53 @@ import 'package:audibrain/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    final _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.updateLocale(newLocale);
+  }
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  // final FlutterLocalization localization = FlutterLocalization.instance;
-  // @override
-  // void initState() {
-  //   //localization
-  //   localization.init(
-  //     mapLocales: [
-  //       const MapLocale('en', AppLocale.en),
-  //       const MapLocale('km', AppLocale.km),
-  //       const MapLocale('ja', AppLocale.ja),
-  //     ],
-  //     initLanguageCode: 'en',
-  //   );
-  //   localization.onTranslatedLanguage = _onTranslatedLanguage;
-  //   super.initState();
-  // }
+  Locale _locale = const Locale('en'); // Default locale
 
-// // the setState function here is a must to add
-//   void _onTranslatedLanguage(Locale? locale) {
-//     setState(() {});
-//   }
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguagePreference();
+  }
+
+  Future<void> _loadLanguagePreference() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? savedLanguage = prefs.getString('selectedLanguage');
+
+    if (savedLanguage != null) {
+      setState(() {
+        _locale = Locale(savedLanguage);
+      });
+    }
+  }
+
+  void updateLocale(Locale newLocale) {
+    setState(() {
+      _locale = newLocale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
       child: MaterialApp(
         supportedLocales: L10n.all,
-        locale: Locale('ur'),
-        // localizationsDelegates: <LocalizationsDelegate<Object>>[
-        //   GlobalM,
-
-        // ],
-        // supportedLocales: localization.supportedLocales,
+        locale: _locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         theme: ThemeData(scaffoldBackgroundColor: Colors.white),
         debugShowCheckedModeBanner: false,

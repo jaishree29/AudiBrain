@@ -1,24 +1,25 @@
 import 'package:audibrain/utils/colors.dart';
+import 'package:audibrain/views/assistant/voice_assistant.dart';
 import 'package:audibrain/views/history/history_page.dart';
 import 'package:audibrain/views/home/homepage.dart';
 import 'package:audibrain/views/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
-class NavBar extends StatefulWidget {
-  const NavBar({super.key});
+class PwdNavbar extends StatefulWidget {
+  const PwdNavbar({super.key});
 
   @override
-  State<NavBar> createState() => _NavBarState();
+  State<PwdNavbar> createState() => _PwdNavbarState();
 }
 
-class _NavBarState extends State<NavBar> {
+class _PwdNavbarState extends State<PwdNavbar> {
   int screenIndex = 0;
   @override
   Widget build(BuildContext context) {
     List screenList = [
       HomePage(),
-      // VoiceAssistantPage(),
+      VoiceAssistantPage(),
       HistoryPage(),
       ProfilePage(),
     ];
@@ -28,7 +29,7 @@ class _NavBarState extends State<NavBar> {
         backgroundColor: AColors.primary,
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
-          // TabItem(icon: Icons.assistant, title: 'Assistant'),
+          TabItem(icon: Icons.assistant, title: 'Assistant'),
           TabItem(icon: Icons.history, title: 'History'),
           TabItem(icon: Icons.account_circle, title: 'Profile'),
         ],

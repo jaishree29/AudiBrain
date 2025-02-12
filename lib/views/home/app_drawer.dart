@@ -1,7 +1,6 @@
 import 'package:audibrain/controllers/auth_controller.dart';
 import 'package:audibrain/utils/colors.dart';
 import 'package:audibrain/views/auth/signup_page.dart';
-import 'package:audibrain/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,20 +15,31 @@ class _MyAppDrawerState extends State<MyAppDrawer> {
   // User log out
   void _userLogOut() async {
     final AuthController authController = AuthController();
-    await authController.signOutFromGoogle();
 
-    var sharedPref = await SharedPreferences.getInstance();
-    sharedPref.setBool(SplashScreenState.KEYLOGIN, false);
+    try {
+      await authController.signOutFromGoogle();
 
-    if (!mounted) return;
+      var sharedPref = await SharedPreferences.getInstance();
+      await sharedPref.clear();
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const SignUpScreen()),
-    );
+      print("Cleared the following data: \n ${sharedPref.toString()}");
 
-    ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Successfully logged out!')));
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const SignUpScreen()),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Successfully logged out!')),
+      );
+    } catch (e) {
+      print("Logout Error: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to log out. Please try again.')),
+      );
+    }
   }
 
   @override
