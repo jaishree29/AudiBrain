@@ -1,5 +1,5 @@
 import 'package:audibrain/utils/colors.dart';
-import 'package:audibrain/views/history/history_page.dart';
+import 'package:audibrain/views/chats/chats_page.dart';
 import 'package:audibrain/views/home/homepage.dart';
 import 'package:audibrain/views/profile/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +18,7 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     List screenList = [
       HomePage(),
-      // VoiceAssistantPage(),
-      HistoryPage(),
+      ChatsPage(),
       ProfilePage(),
     ];
     return Scaffold(
@@ -29,7 +28,7 @@ class _NavBarState extends State<NavBar> {
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           // TabItem(icon: Icons.assistant, title: 'Assistant'),
-          TabItem(icon: Icons.history, title: 'History'),
+          TabItem(icon: Icons.chat, title: 'Chats'),
           TabItem(icon: Icons.account_circle, title: 'Profile'),
         ],
         onTap: (int i) {

@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage>
 
   // List of supported languages
   final List<String> _languages = ['English', 'Spanish', 'French', 'German'];
-  String _selectedLanguage = 'English'; 
+  String _selectedLanguage = 'English';
 
   @override
   void initState() {
@@ -145,13 +145,19 @@ class _HomePageState extends State<HomePage>
           children: [
             Column(
               children: [
-                Image.asset(
-                  AImages.robot,
-                  height: 250,
-                ),
-                // const SizedBox(
-                //   height: 20,
+                // Image.asset(
+                //   AImages.robot,
+                //   height: 250,
                 // ),
+                // // const SizedBox(
+                // //   height: 20,
+                // // ),
+                Image.network(
+                  'https://cdn.intuji.com/2023/10/Alterego-image-breakdown-1024x338.jpg',
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Center(
                   child: Text(
                     AppLocalizations.of(context)!.welcomeToAudiBrain,
@@ -167,42 +173,53 @@ class _HomePageState extends State<HomePage>
                 // const SizedBox(
                 //   height: 20,
                 // ),
-                Image.network(
-                  'https://cdn.intuji.com/2023/10/Alterego-image-breakdown-1024x338.jpg',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.selectLanguage,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Canva Sans',
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+                // Center(
+                //   child: Text(
+                //     AppLocalizations.of(context)!.selectLanguage,
+                //     textAlign: TextAlign.center,
+                //     style: TextStyle(
+                //       fontFamily: 'Canva Sans',
+                //       fontSize: 18,
+                //     ),
+                //   ),
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
 
-                // Drop down menu to select language
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: DropdownButton<String>(
-                    value: _selectedLanguage,
-                    onChanged: _onLanguageChanged,
-                    items: _languages
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    isExpanded: true,
-                    hint: const Text('Select Language'),
+                // // Drop down menu to select language
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                //   child: DropdownButton<String>(
+                //     value: _selectedLanguage,
+                //     onChanged: _onLanguageChanged,
+                //     items: _languages
+                //         .map<DropdownMenuItem<String>>((String value) {
+                //       return DropdownMenuItem<String>(
+                //         value: value,
+                //         child: Text(value),
+                //       );
+                //     }).toList(),
+                //     isExpanded: true,
+                //     hint: const Text(
+                //       'Select Language',
+                //       style: TextStyle(
+                //         fontFamily: 'Canva Sans',
+                //         fontSize: 18,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Text(
+                  AppLocalizations.of(context)!.selectLanguage,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Canva Sans',
+                    fontSize: 18,
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),
