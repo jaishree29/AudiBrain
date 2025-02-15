@@ -1,7 +1,7 @@
 import 'package:audibrain/utils/colors.dart';
 import 'package:audibrain/views/chats/chats_page.dart';
 import 'package:audibrain/views/home/homepage.dart';
-import 'package:audibrain/views/profile/profile_page.dart';
+import 'package:audibrain/views/profile/my_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 

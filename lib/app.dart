@@ -1,4 +1,5 @@
 import 'package:audibrain/l10n/l10n.dart';
+import 'package:audibrain/utils/colors.dart';
 import 'package:audibrain/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +47,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+      value: const SystemUiOverlayStyle(statusBarColor: AColors.primary),
       child: MaterialApp(
         supportedLocales: L10n.all,
         locale: _locale,
