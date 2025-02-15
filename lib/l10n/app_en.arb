@@ -22,5 +22,13 @@
     "selectLanguage": "Let us know in which language you would like to communicate!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "Turn on your location and bluetooth to connect to the device!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "Scan for devices",
+    "@scanDevice": {
+        "description": "Scan device prompt"
     }
 }
