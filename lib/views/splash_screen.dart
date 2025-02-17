@@ -30,7 +30,7 @@ class SplashScreenState extends State<SplashScreen> {
 
     print("Splash Screen: isLoggedIn = $isLoggedIn, role = $role");
 
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(milliseconds: 3400), () {
       if (isLoggedIn == true) {
         if (role == 'pwd') {
           Navigator.pushReplacement(
