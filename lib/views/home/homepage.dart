@@ -215,9 +215,10 @@ class _HomePageState extends State<HomePage>
                 // // const SizedBox(
                 // //   height: 20,
                 // // ),
-                Image.network(
-                  'https://cdn.intuji.com/2023/10/Alterego-image-breakdown-1024x338.jpg',
-                ),
+                // Image.network(
+                //   'https://cdn.intuji.com/2023/10/Alterego-image-breakdown-1024x338.jpg',
+                // ),
+
                 const SizedBox(
                   height: 20,
                 ),

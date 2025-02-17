@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:audibrain/utils/colors.dart';
+import 'package:audibrain/utils/image_strings.dart';
 import 'package:audibrain/views/profile/profile_info_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -134,7 +135,7 @@ class _EditProfileState extends State<EditProfile> {
                             radius: 55,
                             backgroundImage: imagePath != null
                                 ? FileImage(File(imagePath!))
-                                : const AssetImage('asset/images/ghost.png')
+                                : const AssetImage(AImages.languages)
                                     as ImageProvider,
                           ),
                         ),

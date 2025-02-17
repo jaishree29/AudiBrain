@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:audibrain/utils/colors.dart';
+import 'package:audibrain/utils/image_strings.dart';
 import 'package:audibrain/views/auth/signup_page.dart';
 import 'package:audibrain/views/navbar.dart';
 import 'package:audibrain/views/pwd_navbar.dart';
@@ -55,16 +56,26 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AColors.primary,
-      body: Center(
-        child: Text(
-          AppLocalizations.of(context)!.appName,
-          style: TextStyle(
-            fontSize: 50,
-            fontWeight: FontWeight.bold,
-            fontStyle: FontStyle.normal,
-            color: Colors.white,
+      body: Stack(
+        children: [
+          Image.asset(
+            AImages.splash,
+            fit: BoxFit.cover,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
           ),
-        ),
+          Center(
+            child: Text(
+              AppLocalizations.of(context)!.appName,
+              style: TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
