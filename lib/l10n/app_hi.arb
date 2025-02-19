@@ -19,8 +19,24 @@
     "@welcomeToAudiBrain": {
         "description": "Welcome title"
     },
-    "selectLanguage": "हमें बताएं कि आप किस भाषा में बातचीत करना चाहते हैं!",
+    "selectLanguage": "हमें बताएं कि आप किस भाषा में संवाद करना चाहते हैं!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "डिवाइस से कनेक्ट करने के लिए अपना स्थान और ब्लूटूथ चालू करें!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "डिवाइस स्कैन करें",
+    "@scanDevice": {
+        "description": "Scan device prompt"
+    },
+    "scanningDevice": "स्कैनिंग",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "उपलब्ध डिवाइस",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }

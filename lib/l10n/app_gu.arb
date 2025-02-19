@@ -3,7 +3,7 @@
     "@language": {
         "description": "The current language"
     },
-    "appName": "ઓડીબ્રેઇન",
+    "appName": "ઑડીબ્રેઈન",
     "@appName": {
         "description": "This is my application name"
     },
@@ -11,16 +11,32 @@
     "@welcomeBack": {
         "description": "Welcome message"
     },
-    "howAreYouToday": "તમે આજે કેમ છો?",
+    "howAreYouToday": "આજે તમે કેમ છો?",
     "@howAreYouToday": {
         "description": "Greeting message"
     },
-    "welcomeToAudiBrain": "ઓડીબ્રેઇનમાં આપનું સ્વાગત છે",
+    "welcomeToAudiBrain": "ઑડીબ્રેઈનમાં આપનું સ્વાગત છે",
     "@welcomeToAudiBrain": {
         "description": "Welcome title"
     },
-    "selectLanguage": "અમને જણાવો કે તમે કઈ ભાષામાં વાતચીત કરવા માંગો છો!",
+    "selectLanguage": "અમને જણાવો કે તમે કઈ ભાષામાં સંચાર કરવા માંગો છો!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "ડિવાઇસને કનેક્ટ કરવા માટે તમારું સ્થાન અને બ્લુટૂથ ચાલુ કરો!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "ડિવાઇસ સ્કેન કરો",
+    "@scanDevice": {
+        "description": "Scan device prompt"
+    },
+    "scanningDevice": "સ્કેન કરી રહ્યું છે",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "ઉપલબ્ધ ડિવાઇસ",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }

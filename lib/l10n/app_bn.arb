@@ -7,7 +7,7 @@
     "@appName": {
         "description": "This is my application name"
     },
-    "welcomeBack": "ফিরে আসার জন্য স্বাগতম,",
+    "welcomeBack": "ফিরে স্বাগতম,",
     "@welcomeBack": {
         "description": "Welcome message"
     },
@@ -22,5 +22,21 @@
     "selectLanguage": "আমাদের জানান আপনি কোন ভাষায় যোগাযোগ করতে চান!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "ডিভাইস সংযোগ করতে আপনার অবস্থান এবং ব্লুটুথ চালু করুন!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "ডিভাইস স্ক্যান করুন",
+    "@scanDevice": {
+        "description": "Scan device prompt"
+    },
+    "scanningDevice": "স্ক্যান করা হচ্ছে",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "উপলব্ধ ডিভাইস",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }

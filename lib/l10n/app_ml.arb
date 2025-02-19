@@ -7,7 +7,7 @@
     "@appName": {
         "description": "This is my application name"
     },
-    "welcomeBack": "തിരികെ സ്വാഗതം,",
+    "welcomeBack": "സ്വാഗതം,",
     "@welcomeBack": {
         "description": "Welcome message"
     },
@@ -19,8 +19,24 @@
     "@welcomeToAudiBrain": {
         "description": "Welcome title"
     },
-    "selectLanguage": "ഏത് ഭാഷയിൽ ആണ് നിങ്ങൾ ആശയവിനിമയം നടത്താൻ ആഗ്രഹിക്കുന്നതെന്ന് ഞങ്ങളെ അറിയിക്കൂ!",
+    "selectLanguage": "ഏത് ഭാഷയിൽ ആശയവിനിമയം നടത്തണമെന്ന് ഞങ്ങളോട് പറയുക!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "ഉപകരണത്തിലേക്ക് കണക്റ്റുചെയ്യാൻ നിങ്ങളുടെ ലൊക്കേഷൻ, ബ്ലൂടൂത്ത് ഓണാക്കുക!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "ഉപകരണങ്ങൾ സ്കാൻ ചെയ്യുക",
+    "@scanDevice": {
+        "description": "Scan device prompt"
+    },
+    "scanningDevice": "സ്കാൻ ചെയ്യുന്നു",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "ലഭ്യമായ ഉപകരണങ്ങൾ",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }

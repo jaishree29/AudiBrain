@@ -30,5 +30,13 @@
     "scanDevice": "Scan for devices",
     "@scanDevice": {
         "description": "Scan device prompt"
+    },
+    "scanningDevice": "Scanning",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "Available devices",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:audibrain/utils/colors.dart';
+import 'package:audibrain/utils/image_strings.dart';
 import 'package:audibrain/views/home/app_drawer.dart';
 import 'package:audibrain/views/notifications/notifications.dart';
 import 'package:flutter/material.dart';
@@ -208,13 +209,14 @@ class _HomePageState extends State<HomePage>
           children: [
             Column(
               children: [
-                // Image.asset(
-                //   AImages.robot,
-                //   height: 250,
-                // ),
-                // // const SizedBox(
-                // //   height: 20,
-                // // ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Image.asset(
+                  AImages.wave,
+                  width: 300,
+                  height: 200,
+                ),
                 // Image.network(
                 //   'https://cdn.intuji.com/2023/10/Alterego-image-breakdown-1024x338.jpg',
                 // ),
@@ -275,7 +277,7 @@ class _HomePageState extends State<HomePage>
                 //   ),
                 // ),
                 Text(
-                  AppLocalizations.of(context)!.selectLanguage,
+                  AppLocalizations.of(context)!.connectDevice,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'Canva Sans',
@@ -305,7 +307,9 @@ class _HomePageState extends State<HomePage>
                     padding: const EdgeInsets.symmetric(
                         horizontal: 60.0, vertical: 10),
                     child: Text(
-                      _isScanning ? 'Scanning...' : 'Scan for devices',
+                      _isScanning
+                          ? '${AppLocalizations.of(context)!.scanningDevice}...'
+                          : AppLocalizations.of(context)!.scanDevice,
                       style: TextStyle(
                         fontFamily: 'Canva Sans',
                         fontSize: 20,
@@ -320,7 +324,7 @@ class _HomePageState extends State<HomePage>
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Available devices:',
+                      '${AppLocalizations.of(context)!.availableDevices}:',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'Canva Sans',

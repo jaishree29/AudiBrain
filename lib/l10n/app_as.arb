@@ -8,7 +8,7 @@
     "@appName": {
         "description": "This is my application name"
     },
-    "welcomeBack": "পুনৰ স্বাগতম,",
+    "welcomeBack": "আপোনাক স্বাগতম,",
     "@welcomeBack": {
         "description": "Welcome message"
     },
@@ -20,8 +20,24 @@
     "@welcomeToAudiBrain": {
         "description": "Welcome title"
     },
-    "selectLanguage": "আমাক জনাওক আপুনি কোন ভাষাত যোগাযোগ কৰিব বিচাৰে!",
+    "selectLanguage": "আমাক জনাওক আপুনি কোনটো ভাষাত যোগাযোগ কৰিব বিচাৰে!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "ডিভাইচটো সংযোগ কৰিবলৈ আপোনাৰ লোকেচন আৰু ব্লুটুথ চালু কৰক!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "ডিভাইচবোৰ স্কেন কৰক",
+    "@scanDevice": {
+        "description": "Scan device prompt"
+    },
+    "scanningDevice": "স্কেন কৰি আছে",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "উপলব্ধ ডিভাইচবোৰ",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }

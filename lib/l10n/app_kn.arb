@@ -3,24 +3,40 @@
     "@language": {
         "description": "The current language"
     },
-    "appName": "آڈیبرین",
+    "appName": "آڈی برین",
     "@appName": {
         "description": "This is my application name"
     },
-    "welcomeBack": "دوبارہ خوش آمدید,",
+    "welcomeBack": "بہ خیر آمدید,",
     "@welcomeBack": {
         "description": "Welcome message"
     },
-    "howAreYouToday": "تہِ چھُہ آج کیا حال؟",
+    "howAreYouToday": "تہہ کیسے ییو؟",
     "@howAreYouToday": {
         "description": "Greeting message"
     },
-    "welcomeToAudiBrain": "آڈیبرین خوش آمدید",
+    "welcomeToAudiBrain": "آڈی برین میں خوش آمدید",
     "@welcomeToAudiBrain": {
         "description": "Welcome title"
     },
-    "selectLanguage": "ہمہِ کہِ چھُہ یہِ بتاونہِ یمہِ زبانہِ منز بات چیت کرن چاہتھ!",
+    "selectLanguage": "ہمیں بتائیں کہ آپ کس زبان میں بات کرنا چاہتے ہیں!",
     "@selectLanguage": {
         "description": "Language selection prompt"
+    },
+    "connectDevice": "آلہ سے رابطہ قائم کرنے کے لیے اپنی جگہ اور بلوٹوتھ آن کریں!",
+    "@connectDevice": {
+        "description": "Device connection prompt"
+    },
+    "scanDevice": "آلات کو اسکین کریں",
+    "@scanDevice": {
+        "description": "Scan device prompt"
+    },
+    "scanningDevice": "اسکین کر رہا ہے",
+    "@scanningDevice": {
+        "description": "Scanning device prompt"
+    },
+    "availableDevices": "دستیاب آلات",
+    "@availableDevices": {
+        "description": "Available devices subtitle"
     }
 }
