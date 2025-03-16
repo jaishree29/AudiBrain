@@ -7,12 +7,14 @@ class ChatTile extends StatelessWidget {
     required this.role,
     required this.userId,
     required this.onTap,
+    this.latestMessage, 
   });
 
   final String email;
   final String role;
   final String userId;
   final Function onTap;
+  final String? latestMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +28,39 @@ class ChatTile extends StatelessWidget {
         onTap: () => onTap.call(),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
-          vertical: 0,
+          vertical: 8,
         ),
         title: Text(
           email,
-          style: TextStyle(fontSize: 17),
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-        subtitle: Text(
-          role,
-          style: TextStyle(fontSize: 15),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              role,
+              style: TextStyle(
+                fontSize: 15,
+                color: Colors.grey[600],
+              ),
+            ),
+            if (latestMessage != null) 
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: Text(
+                  latestMessage!,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis, 
+                ),
+              ),
+          ],
         ),
       ),
     );

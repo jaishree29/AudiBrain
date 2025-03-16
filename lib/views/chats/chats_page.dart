@@ -16,6 +16,7 @@ class ChatsPage extends StatefulWidget {
 class _ChatsPageState extends State<ChatsPage> {
   final TextEditingController _searchController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   bool isLoading = false;
   bool hasSearched = false;
@@ -44,7 +45,6 @@ class _ChatsPageState extends State<ChatsPage> {
       hasSearched = true;
     });
 
-    FirebaseFirestore _firestore = FirebaseFirestore.instance;
     await _firestore
         .collection('users')
         .where('email', isEqualTo: searchText)
@@ -71,6 +71,33 @@ class _ChatsPageState extends State<ChatsPage> {
   String getChatRoomId(String user1, String user2) {
     List<String> sortedEmails = [user1, user2]..sort();
     return "${sortedEmails[0]}_${sortedEmails[1]}";
+  }
+
+  // Fetch all chat rooms where the current user is involved
+  Stream<List<QueryDocumentSnapshot>> getRecentChats() {
+    return _firestore.collection('chatrooms').snapshots().map((snapshot) {
+      return snapshot.docs.where((doc) {
+        String chatRoomId = doc.id;
+        List<String> participants = chatRoomId.split('_');
+        return participants.contains(currentUserEmail);
+      }).toList();
+    });
+  }
+
+  // Fetch the latest message from a chat room
+  Future<Map<String, dynamic>?> getLatestMessage(String chatRoomId) async {
+    var messagesSnapshot = await _firestore
+        .collection('chatrooms')
+        .doc(chatRoomId)
+        .collection('messages')
+        .orderBy('time', descending: true)
+        .limit(1)
+        .get();
+
+    if (messagesSnapshot.docs.isNotEmpty) {
+      return messagesSnapshot.docs[0].data();
+    }
+    return null;
   }
 
   @override
@@ -143,6 +170,93 @@ class _ChatsPageState extends State<ChatsPage> {
                               ),
                             )
                       : SizedBox(),
+              SizedBox(height: 20),
+              StreamBuilder<List<QueryDocumentSnapshot>>(
+                stream: getRecentChats(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    print("No recent chats found");
+                    return Center(child: Text("No recent chats"));
+                  }
+
+                  var chatRooms = snapshot.data!;
+                  print("Chat Rooms: ${chatRooms.length}");
+
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: chatRooms.length,
+                    itemBuilder: (context, index) {
+                      String chatRoomId = chatRooms[index].id;
+                      List<String> participants = chatRoomId.split('_');
+                      print("Chat Room ID: $chatRoomId");
+                      print("Participants: $participants");
+
+                      String otherUserEmail = participants
+                          .firstWhere((email) => email != currentUserEmail);
+                      print("Other User Email: $otherUserEmail");
+
+                      return FutureBuilder<DocumentSnapshot>(
+                        future: _firestore
+                            .collection('users')
+                            .doc(otherUserEmail)
+                            .get(),
+                        builder: (context, userSnapshot) {
+                          if (userSnapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return SizedBox();
+                          }
+
+                          if (!userSnapshot.hasData ||
+                              !userSnapshot.data!.exists) {
+                            print("User not found: $otherUserEmail");
+                            return SizedBox();
+                          }
+
+                          var userData =
+                              userSnapshot.data!.data() as Map<String, dynamic>;
+                          print("User Data: $userData");
+
+                          return FutureBuilder<Map<String, dynamic>?>(
+                            future: getLatestMessage(chatRoomId),
+                            builder: (context, messageSnapshot) {
+                              if (messageSnapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return SizedBox();
+                              }
+
+                              var latestMessage = messageSnapshot.data;
+                              print("Latest Message: $latestMessage");
+
+                              return ChatTile(
+                                email: userData['email'],
+                                role: userData['role'],
+                                userId: userData['uid'],
+                                latestMessage: latestMessage?['message'],
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ChatRoom(
+                                        userMap: userData,
+                                        chatRoomId: chatRoomId,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),

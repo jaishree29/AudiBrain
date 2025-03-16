@@ -35,6 +35,8 @@ class _ChatRoomState extends State<ChatRoom> {
           .add(messageData);
 
       _message.clear();
+    } else {
+      print('Enter text to send');
     }
   }
 
@@ -88,7 +90,8 @@ class _ChatRoomState extends State<ChatRoom> {
                         child: Text(
                           messageData['message'],
                           style: TextStyle(
-                              color: isSentByMe ? Colors.white : Colors.black),
+                            color: isSentByMe ? Colors.white : Colors.black,
+                          ),
                         ),
                       ),
                     );
