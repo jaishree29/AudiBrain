@@ -19,6 +19,7 @@ class ATextField extends StatelessWidget {
   final ValueChanged? onSubmitted;
   final ValueChanged<String>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
+  final Function? onTapSuffixIcon;
 
   const ATextField({
     super.key,
@@ -38,12 +39,11 @@ class ATextField extends StatelessWidget {
     this.onSubmitted,
     this.onFieldSubmitted,
     this.validator,
+    this.onTapSuffixIcon,
   });
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,7 +56,7 @@ class ATextField extends StatelessWidget {
           obscureText: obscureText,
           keyboardType: keyboardType,
           textInputAction: textInputAction,
-          cursorColor: AColors.primary.withOpacity(0.3),
+          cursorColor: AColors.primary,
           validator: validator,
           decoration: InputDecoration(
             hintText: hintText,
@@ -67,19 +67,23 @@ class ATextField extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
               borderSide: BorderSide(
-                color: isDarkMode ? AColors.lightGrey : AColors.darkGrey,
+                color: AColors.darkGrey,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(
+                color: Colors.grey.shade500,
               ),
             ),
             floatingLabelStyle: TextStyle(
               fontWeight: FontWeight.w500,
-              color: isDarkMode
-                  ? AColors.lightGrey
-                  : AColors.primary.withOpacity(0.3),
+              color: Colors.black,
             ),
             labelStyle: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 16,
-              color: isDarkMode ? AColors.lightGrey : AColors.lightGrey,
+              color: Colors.grey.shade600,
             ),
             labelText: labelText,
             errorText: errorMessage,
@@ -89,7 +93,10 @@ class ATextField extends StatelessWidget {
               fontWeight: FontWeight.w300,
               color: Colors.red,
             ),
-            suffixIcon: suffixIcon,
+            suffixIcon: IconButton(
+              onPressed: () => onTapSuffixIcon?.call(),
+              icon: suffixIcon!,
+            ),
           ),
         ),
       ],

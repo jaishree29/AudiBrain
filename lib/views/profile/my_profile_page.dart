@@ -17,23 +17,53 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final AuthController _authController = AuthController();
 
-  // User Log out
   void _userLogOut() async {
-    await _authController.signOutFromGoogle();
+    final AuthController authController = AuthController();
 
-    var sharedPref = await SharedPreferences.getInstance();
-    sharedPref.setBool(SplashScreenState.KEYLOGIN, false);
+    try {
+      await authController.signOutFromGoogle();
 
-    if (!mounted) return;
+      var sharedPref = await SharedPreferences.getInstance();
+      sharedPref.setBool(SplashScreenState.KEYLOGIN, false);
+      await sharedPref.clear();
 
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const SignUpScreen()),
-    );
+      print("Cleared the following data: \n ${sharedPref.toString()}");
 
-    ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Successfully logged out!')));
+      if (!mounted) return;
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const SignUpScreen()),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Successfully logged out!')),
+      );
+    } catch (e) {
+      print("Logout Error: $e");
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to log out. Please try again.')),
+      );
+    }
   }
+
+  // User Log out
+  // void _userLogOut() async {
+  //   await _authController.signOutFromGoogle();
+
+  //   var sharedPref = await SharedPreferences.getInstance();
+  //   sharedPref.setBool(SplashScreenState.KEYLOGIN, false);
+
+  //   if (!mounted) return;
+
+  //   Navigator.pushReplacement(
+  //     context,
+  //     MaterialPageRoute(builder: (context) => const SignUpScreen()),
+  //   );
+
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(content: Text('Successfully logged out!')));
+  // }
 
   // Show dialog to enter email for password reset
   void _showChangePasswordDialog() {

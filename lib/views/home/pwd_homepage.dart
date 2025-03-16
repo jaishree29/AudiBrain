@@ -9,14 +9,14 @@ import 'package:flutter_blue_classic/flutter_blue_classic.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class PwdHomepage extends StatefulWidget {
+  const PwdHomepage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<PwdHomepage> createState() => _PwdHomepageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _PwdHomepageState extends State<PwdHomepage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
@@ -137,6 +137,7 @@ class _HomePageState extends State<HomePage>
     List<BluetoothDevice> scanResults = _scanResults.toList();
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: Colors.white,
         toolbarHeight: 80,
         backgroundColor: Colors.transparent,
         leading: InkWell(
@@ -407,23 +408,23 @@ class _HomePageState extends State<HomePage>
                   trailing: index == _connectingToIndex
                       ? const CircularProgressIndicator()
                       : Text("${result.rssi} dBm"),
-                  onTap: () async {
-                    setState(() => _connectingToIndex = index);
-                    try {
-                      final connection =
-                          await _flutterBlueClassicPlugin.connect(
-                        result.address,
-                      );
-                      if (connection!.isConnected) {
-                        setState(() => _connectingToIndex = null);
-                      }
-                    } catch (e) {
-                      setState(() => _connectingToIndex = null);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Error connecting: $e")),
-                      );
-                    }
-                  },
+                  // onTap: () async {
+                  //   setState(() => _connectingToIndex = index);
+                  //   try {
+                  //     final connection =
+                  //         await _flutterBlueClassicPlugin.connect(
+                  //       result.address,
+                  //     );
+                  //     if (connection!.isConnected) {
+                  //       setState(() => _connectingToIndex = null);
+                  //     }
+                  //   } catch (e) {
+                  //     setState(() => _connectingToIndex = null);
+                  //     ScaffoldMessenger.of(context).showSnackBar(
+                  //       SnackBar(content: Text("Error connecting: $e")),
+                  //     );
+                  //   }
+                  // },
                 ),
               ),
         ],
