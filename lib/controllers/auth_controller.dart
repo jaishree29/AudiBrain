@@ -18,6 +18,17 @@ class AuthController {
     }
   }
 
+    Future<UserModel?> getCurrentUser() async {
+    final user = _auth.currentUser;
+    if (user != null) {
+      final userDoc = await _firestore.collection('users').doc(user.uid).get();
+      if (userDoc.exists) {
+        return UserModel.fromFirebase(user);
+      }
+    }
+    return null;
+  }
+
   // Sign up with email and password
   Future<UserModel?> signUpWithEmailPassword(String email, String password, String role, String language) async {
     try {

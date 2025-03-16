@@ -6,11 +6,13 @@ class ChatTile extends StatelessWidget {
     required this.email,
     required this.role,
     required this.userId,
+    required this.onTap,
   });
 
   final String email;
   final String role;
   final String userId;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class ChatTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: ListTile(
+        onTap: () => onTap.call(),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 12,
           vertical: 0,

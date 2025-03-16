@@ -3,18 +3,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatefulWidget {
+class UserChatPage extends StatefulWidget {
   final String name;
-  const ChatPage({
+  const UserChatPage({
     super.key,
     this.name = 'regular.user@gmail.com',
   });
 
   @override
-  State<ChatPage> createState() => _ChatPageState();
+  State<UserChatPage> createState() => _UserChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _UserChatPageState extends State<UserChatPage> {
   //Controllers
   final TextEditingController messageController = TextEditingController();
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;

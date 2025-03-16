@@ -1,7 +1,9 @@
 import 'package:audibrain/utils/colors.dart';
+import 'package:audibrain/views/chats/chat_room.dart';
 import 'package:audibrain/views/chats/chat_tile.dart';
 import 'package:audibrain/widgets/text_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -12,12 +14,19 @@ class ChatsPage extends StatefulWidget {
 }
 
 class _ChatsPageState extends State<ChatsPage> {
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _searchController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   bool isLoading = false;
   bool hasSearched = false;
   Map<String, dynamic>? userMap;
+  String? currentUserEmail;
+
+  @override
+  void initState() {
+    super.initState();
+    currentUserEmail = _auth.currentUser?.email;
+  }
 
   void onSearch() async {
     String searchText = _searchController.text.trim();
@@ -30,7 +39,6 @@ class _ChatsPageState extends State<ChatsPage> {
       return;
     }
 
-    print('Searching....');
     setState(() {
       isLoading = true;
       hasSearched = true;
@@ -39,10 +47,7 @@ class _ChatsPageState extends State<ChatsPage> {
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
     await _firestore
         .collection('users')
-        .where(
-          'email',
-          isEqualTo: searchText,
-        )
+        .where('email', isEqualTo: searchText)
         .get()
         .then((value) {
       if (value.docs.isNotEmpty) {
@@ -50,27 +55,22 @@ class _ChatsPageState extends State<ChatsPage> {
           userMap = value.docs[0].data();
           isLoading = false;
         });
-        print(userMap);
       } else {
         setState(() {
           userMap = null;
           isLoading = false;
         });
-        print('No user found');
       }
     }).catchError((error) {
       setState(() {
         isLoading = false;
       });
-      print('Error searching: $error');
     });
   }
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _searchController.dispose();
-    super.dispose();
+  String getChatRoomId(String user1, String user2) {
+    List<String> sortedEmails = [user1, user2]..sort();
+    return "${sortedEmails[0]}_${sortedEmails[1]}";
   }
 
   @override
@@ -93,21 +93,14 @@ class _ChatsPageState extends State<ChatsPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               ATextField(
                 controller: _searchController,
                 labelText: 'Search user by email',
-                suffixIcon: Icon(
-                  Icons.search,
-                  size: 25,
-                ),
+                suffixIcon: Icon(Icons.search, size: 25),
                 onTapSuffixIcon: onSearch,
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: 20),
               isLoading
                   ? CircularProgressIndicator()
                   : hasSearched
@@ -116,6 +109,23 @@ class _ChatsPageState extends State<ChatsPage> {
                               email: userMap!['email'],
                               role: userMap!['role'],
                               userId: userMap!['uid'],
+                              onTap: () {
+                                if (currentUserEmail != null) {
+                                  String chatRoomId = getChatRoomId(
+                                    currentUserEmail!,
+                                    userMap!['email'],
+                                  );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ChatRoom(
+                                        userMap: userMap!,
+                                        chatRoomId: chatRoomId,
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
                             )
                           : Card(
                               child: ListTile(
@@ -132,7 +142,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                 ),
                               ),
                             )
-                      : SizedBox(), 
+                      : SizedBox(),
             ],
           ),
         ),

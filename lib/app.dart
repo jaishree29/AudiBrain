@@ -3,6 +3,7 @@ import 'package:audibrain/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyApp extends StatefulWidget {
@@ -47,14 +48,33 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-      child: MaterialApp(
-        supportedLocales: L10n.all,
-        locale: _locale,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-        debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        // Use builder only if needed to use library outside ScreenUtilInit context
+        builder: (_, child) {
+          return MaterialApp(
+            supportedLocales: L10n.all,
+            locale: _locale,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              scaffoldBackgroundColor: Colors.white,
+            ),
+            home: child,
+          );
+        },
+        child: const SplashScreen(),
       ),
+      // child: MaterialApp(
+      //   supportedLocales: L10n.all,
+      //   locale: _locale,
+      //   localizationsDelegates: AppLocalizations.localizationsDelegates,
+      //   theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+      //   debugShowCheckedModeBanner: false,
+      //   home: const SplashScreen(),
+      // ),
     );
   }
 }
